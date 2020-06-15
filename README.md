@@ -31,7 +31,7 @@ The training data comes in the shape of 3 separate files:
 
 The point forecast submission are being evaluated using the **Root Mean Squared Scaled Error (RMSSE)**, which is derived from the Mean Absolute Scaled Error (MASE) that was designed to be scale invariant and symmetric. 
 
-# EDA Summary
+## EDA Summary
 - The rolling 90 day sales by state shows that sales for all three States have been increasing from 2011 to 2016
 	- CA sold the most amount of items during the entire 5 year period
 		- CA has four stores with store 3 always having highest sales
