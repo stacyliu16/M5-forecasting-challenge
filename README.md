@@ -6,10 +6,12 @@ Estimate the point forecasts of the unit sales of various products sold in the U
 **The goal**: We have been challenged to **predict sales data** provided by the retail giant Walmart 28 days into the future. This competition will run in 2 tracks: In addition to forecasting the values themselves in the Forecasting competition, we are simultaneously tasked to **estimate the uncertainty** of our predictions in the Uncertainty Distribution competition. Both competitions will have the same 28 day forecast horizon.
 
 **EDA Notebook**: This notebook will be used to visualize the sales data and gain some insights from it.
-**Prophet Notebook (To be uploaded)**: This notebook will be used to model sales using Facebook Prophet model.
-**LSTM Notebook (To be uploaded)**: This notebook will be used to model sales using LSTM model.
-**LightGBM Notebook (To be uploaded)**: This notebook will be used to model sales using LightGBM model.
 
+**Prophet Notebook (To be uploaded)**: This notebook will be used to model sales using Facebook Prophet model.
+
+**LSTM Notebook (To be uploaded)**: This notebook will be used to model sales using LSTM model.
+
+**LightGBM Notebook (To be uploaded)**: This notebook will be used to model sales using LightGBM model.
 
 **The data**: We are working with **42,840 hierarchical time series**. The data were obtained in the 3 US states of California (CA), Texas (TX), and Wisconsin (WI). “Hierarchical” here means that data can be aggregated on different levels: item level, department level, product category level, and state level. The sales information reaches back from Jan 2011 to June 2016. In addition to the sales numbers, we are also given corresponding data on prices, promotions, and holidays. Note, that we have been warned that **most of the time series contain zero values.**
 
