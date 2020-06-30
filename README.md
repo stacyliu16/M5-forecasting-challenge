@@ -5,7 +5,7 @@ Estimate the point forecasts of the unit sales of various products sold in the U
 
 **The goal**: We have been challenged to **predict sales data** provided by the retail giant Walmart 28 days into the future. This competition will run in 2 tracks: In addition to forecasting the values themselves in the Forecasting competition, we are simultaneously tasked to **estimate the uncertainty** of our predictions in the Uncertainty Distribution competition. Both competitions will have the same 28 day forecast horizon.
 
-**EDA Notebook**: This notebook will be used to visualize the sales data and gain some insights from it.
+**EDA Notebook**: This notebook will be used to visualize the sales data and gain some insights from it. (https://github.com/stacyliu16/M5-forecasting-challenge/blob/master/M5%20Forecasting%20-%20EDA.ipynb)
 
 **Prophet Notebook (To be uploaded)**: This notebook will be used to model sales using Facebook Prophet model.
 
