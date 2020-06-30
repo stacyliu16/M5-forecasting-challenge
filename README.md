@@ -9,7 +9,7 @@ Estimate the point forecasts of the unit sales of various products sold in the U
 
 **Prophet Notebook**: This notebook will be used to model sales using Facebook Prophet model. (https://github.com/stacyliu16/M5-forecasting-challenge/blob/master/M5%20Forecasting%20Challenge%20-%20Prophet%20Model%20Deep%20Dive.ipynb)
 
-**LightGBM Notebook (To be uploaded)**: This notebook will be used to model sales using LightGBM model.
+**LightGBM Notebook**: This notebook will be used to model sales using LightGBM model. (https://github.com/stacyliu16/M5-forecasting-challenge/blob/master/M5%20Forecasting%20Challenge%20-%20LightGBM%20Deep%20Dive.ipynb)
 
 **LSTM Notebook (To be uploaded)**: This notebook will be used to model sales using LSTM model.
 
@@ -78,3 +78,27 @@ Since at the item level data is fairly sporatic, I used a top down approach to p
 The following model metrics produced the smallest error of **0.57504** on the test set:
 - Prophet(growth='linear', holidays = holidays, uncertainty_samples=False, n_changepoints = 50, changepoint_prior_scale=0.7, changepoint_range=0.8, holidays_prior_scale=20, seasonality_mode='multiplicative', seasonality_prior_scale=20)
     - Note that "holidays" includes events, snap dates, as well as a +2 and -3 window for events (from EDA we found that sales increased 2 days prior to event and decreases 3 days after)
+    
+## LightGBM Summary
+**LightGBM Model**:Light GBM is a fast, distributed, high-performance gradient boosting framework based on decision tree algorithm, used for ranking, classification and many other machine learning tasks. It splits the tree leaf wise with the best fit whereas other boosting algorithms split the tree depth wise or level wise rather than leaf-wise. So when growing on the same leaf in Light GBM, the leaf-wise algorithm can reduce more loss than the level-wise algorithm and hence results in much better accuracy which can rarely be achieved by any of the existing boosting algorithms.
+
+It is designed to be distributed and efficient with the following advantages: (1) Faster training speed and higher efficiency, (2) Lower memory usage, (3) Better accuracy, (4) Support of parallel and GPU learning, (5) Capable of handling large-scale data (https://lightgbm.readthedocs.io/en/latest/)
+
+**Model & Results:**
+- Additional features added: (1) lagging 7, 28 day demand, (2) rolling 7, 28 day mean demand, (3) additional date features
+- parameters used = {
+          "objective" : "poisson",
+          "metric" :"rmse",
+          "force_row_wise" : True,
+          "learning_rate" : 0.075,
+          "sub_row" : 0.75,
+          "bagging_freq" : 1,
+          "lambda_l2" : 0.1,
+          "metric": ["rmse"],
+          'verbosity': 1,
+          'num_iterations' : 1200,
+          'num_leaves': 128,
+          "min_data_in_leaf": 100,
+         }
+- Result: **2.93753** on the test set
+
