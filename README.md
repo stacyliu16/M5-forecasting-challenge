@@ -7,7 +7,7 @@ Estimate the point forecasts of the unit sales of various products sold in the U
 
 **EDA Notebook**: This notebook will be used to visualize the sales data and gain some insights from it. (https://github.com/stacyliu16/M5-forecasting-challenge/blob/master/M5%20Forecasting%20-%20EDA.ipynb)
 
-**Prophet Notebook**: This notebook will be used to model sales using Facebook Prophet model.
+**Prophet Notebook**: This notebook will be used to model sales using Facebook Prophet model. (https://github.com/stacyliu16/M5-forecasting-challenge/blob/master/M5%20Forecasting%20Challenge%20-%20Prophet%20Model%20Deep%20Dive.ipynb)
 
 **LightGBM Notebook (To be uploaded)**: This notebook will be used to model sales using LightGBM model.
 
@@ -70,7 +70,6 @@ Note that "holidays" includes events, snap dates, as well as a +2 and -3 window 
 - At the item level sales are sporatic with lots of days with zero sales
 
 ## Prophet Summary
-#### Introduction
 **Prophet Model**: Prophet is a procedure for forecasting time series data based on an additive model where non-linear trends are fit with yearly, weekly, and daily seasonality, plus holiday effects. It works best with time series that have strong seasonal effects and several seasons of historical data. Prophet is robust to missing data and shifts in the trend, and typically handles outliers well. (https://facebook.github.io/prophet/)
 
 **Model & Results:**
