@@ -7,11 +7,11 @@ Estimate the point forecasts of the unit sales of various products sold in the U
 
 **EDA Notebook**: This notebook will be used to visualize the sales data and gain some insights from it. (https://github.com/stacyliu16/M5-forecasting-challenge/blob/master/M5%20Forecasting%20-%20EDA.ipynb)
 
-**Prophet Notebook (To be uploaded)**: This notebook will be used to model sales using Facebook Prophet model.
-
-**LSTM Notebook (To be uploaded)**: This notebook will be used to model sales using LSTM model.
+**Prophet Notebook**: This notebook will be used to model sales using Facebook Prophet model.
 
 **LightGBM Notebook (To be uploaded)**: This notebook will be used to model sales using LightGBM model.
+
+**LSTM Notebook (To be uploaded)**: This notebook will be used to model sales using LSTM model.
 
 **The data**: We are working with **42,840 hierarchical time series**. The data were obtained in the 3 US states of California (CA), Texas (TX), and Wisconsin (WI). “Hierarchical” here means that data can be aggregated on different levels: item level, department level, product category level, and state level. The sales information reaches back from Jan 2011 to June 2016. In addition to the sales numbers, we are also given corresponding data on prices, promotions, and holidays. Note, that we have been warned that **most of the time series contain zero values.**
 
@@ -30,6 +30,14 @@ The training data comes in the shape of 3 separate files:
 **The metrics:**
 
 The point forecast submission are being evaluated using the **Root Mean Squared Scaled Error (RMSSE)**, which is derived from the Mean Absolute Scaled Error (MASE) that was designed to be scale invariant and symmetric. 
+
+**Final Model & Results**:
+
+Results from the **Prophet** model was submitted for final evaluation. The built in seasonality trends and ability to handle outliers as well as ease of parameter customization allowed me to produce the smallest error of 0.57504 on the test set.
+
+The parameters used are: growth='linear', holidays = holidays, uncertainty_samples=False, n_changepoints = 50, changepoint_prior_scale=0.7, changepoint_range=0.8, holidays_prior_scale=20, seasonality_mode='multiplicative', seasonality_prior_scale=20
+
+Note that "holidays" includes events, snap dates, as well as a +2 and -3 window for events 
 
 ## EDA Summary
 - The rolling 90 day sales by state shows that sales for all three States have been increasing from 2011 to 2016
@@ -60,3 +68,14 @@ The point forecast submission are being evaluated using the **Root Mean Squared 
 - By Price:
 	- Price does not seem to have an effect on sales amt
 - At the item level sales are sporatic with lots of days with zero sales
+
+## Prophet Summary
+#### Introduction
+**Prophet Model**: Prophet is a procedure for forecasting time series data based on an additive model where non-linear trends are fit with yearly, weekly, and daily seasonality, plus holiday effects. It works best with time series that have strong seasonal effects and several seasons of historical data. Prophet is robust to missing data and shifts in the trend, and typically handles outliers well. (https://facebook.github.io/prophet/)
+
+**Model & Results:**
+Since at the item level data is fairly sporatic, I used a top down approach to predict 70 time series group by Department, Category, Store and State and then distribute down to the item level by weight (total sale in last 28 days). 
+
+The following model metrics produced the smallest error of **0.57504** on the test set:
+- Prophet(growth='linear', holidays = holidays, uncertainty_samples=False, n_changepoints = 50, changepoint_prior_scale=0.7, changepoint_range=0.8, holidays_prior_scale=20, seasonality_mode='multiplicative', seasonality_prior_scale=20)
+    - Note that "holidays" includes events, snap dates, as well as a +2 and -3 window for events (from EDA we found that sales increased 2 days prior to event and decreases 3 days after)
